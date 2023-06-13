@@ -24,7 +24,7 @@ public class StringSchema {
         conditions.add(s -> s.toString().contains(substring));
         return this;
     }
-    public final boolean isValid(Object obj){
+    public final boolean isValid(Object obj) {
         if (obj == null) {
             return !checking;
         }
