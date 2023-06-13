@@ -36,91 +36,155 @@ schema.isValid("what does the fox say"); // false
 // уже false, так как добавлена ещё одна проверка contains("whatthe")
 ```
 
-### Валидация чисел
-```
-import hexlet.code.Validator;
-import hexlet.code.schemas.NumberSchema;
+[//]: # (### Валидация чисел)
 
-Validator v = new Validator();
+[//]: # (```)
 
-NumberSchema schema = v.number();
+[//]: # (import hexlet.code.Validator;)
 
-schema.isValid(null); // true
+[//]: # (import hexlet.code.schemas.NumberSchema;)
 
-schema.required();
+[//]: # ()
+[//]: # (Validator v = new Validator&#40;&#41;;)
 
-schema.isValid(null); // false
-schema.isValid(10) // true
-schema.isValid("5"); // false
+[//]: # ()
+[//]: # (NumberSchema schema = v.number&#40;&#41;;)
 
-schema.positive().isValid(10); // true
-schema.isValid(-10); // false
+[//]: # ()
+[//]: # (schema.isValid&#40;null&#41;; // true)
 
-schema.range(5, 10);
+[//]: # ()
+[//]: # (schema.required&#40;&#41;;)
 
-schema.isValid(5); // true
-schema.isValid(10); // true
-schema.isValid(4); // false
-schema.isValid(11); // false
-```
-### Валидация объектов типа Map
-```
-import hexlet.code.Validator;
-import hexlet.code.schemas.MapSchema;
+[//]: # ()
+[//]: # (schema.isValid&#40;null&#41;; // false)
 
-Validator v = new Validator();
+[//]: # (schema.isValid&#40;10&#41; // true)
 
-MapSchema schema = v.map();
+[//]: # (schema.isValid&#40;"5"&#41;; // false)
 
-schema.isValid(null); // true
+[//]: # ()
+[//]: # (schema.positive&#40;&#41;.isValid&#40;10&#41;; // true)
 
-schema.required();
+[//]: # (schema.isValid&#40;-10&#41;; // false)
 
-schema.isValid(null) // false
-schema.isValid(new HashMap()); // true
-Map<String, String> data = new HashMap<>();
-data.put("key1", "value1");
-schema.isValid(data); // true
+[//]: # ()
+[//]: # (schema.range&#40;5, 10&#41;;)
 
-schema.sizeof(2);
+[//]: # ()
+[//]: # (schema.isValid&#40;5&#41;; // true)
 
-schema.isValid(data);  // false
-data.put("key2", "value2");
-schema.isValid(data); // true
-```
-### Вложенная валидация
-```
-import hexlet.code.Validator;
-import hexlet.code.schemas.MapSchema;
-import hexlet.code.schemas.BaseSchema;
+[//]: # (schema.isValid&#40;10&#41;; // true)
 
-Validator v = new Validator();
+[//]: # (schema.isValid&#40;4&#41;; // false)
 
-MapSchema schema = v.map();
+[//]: # (schema.isValid&#40;11&#41;; // false)
 
-// shape - позволяет описывать валидацию для значений объекта Map по ключам.
-Map<String, BaseSchema> schemas = new HashMap<>();
-schemas.put("name", v.string().required());
-schemas.put("age", v.number().positive());
-schema.shape(schemas);
+[//]: # (```)
 
-Map<String, Object> human1 = new HashMap<>();
-human1.put("name", "Kolya");
-human1.put("age", 100);
-schema.isValid(human1); // true
+[//]: # (### Валидация объектов типа Map)
 
-Map<String, Object> human2 = new HashMap<>();
-human2.put("name", "Maya");
-human2.put("age", null);
-schema.isValid(human2); // true
+[//]: # (```)
 
-Map<String, Object> human3 = new HashMap<>();
-human3.put("name", "");
-human3.put("age", null);
-schema.isValid(human3); // false
+[//]: # (import hexlet.code.Validator;)
 
-Map<String, Object> human4 = new HashMap<>();
-human4.put("name", "Valya");
-human4.put("age", -5);
-schema.isValid(human4); // false
-```
+[//]: # (import hexlet.code.schemas.MapSchema;)
+
+[//]: # ()
+[//]: # (Validator v = new Validator&#40;&#41;;)
+
+[//]: # ()
+[//]: # (MapSchema schema = v.map&#40;&#41;;)
+
+[//]: # ()
+[//]: # (schema.isValid&#40;null&#41;; // true)
+
+[//]: # ()
+[//]: # (schema.required&#40;&#41;;)
+
+[//]: # ()
+[//]: # (schema.isValid&#40;null&#41; // false)
+
+[//]: # (schema.isValid&#40;new HashMap&#40;&#41;&#41;; // true)
+
+[//]: # (Map<String, String> data = new HashMap<>&#40;&#41;;)
+
+[//]: # (data.put&#40;"key1", "value1"&#41;;)
+
+[//]: # (schema.isValid&#40;data&#41;; // true)
+
+[//]: # ()
+[//]: # (schema.sizeof&#40;2&#41;;)
+
+[//]: # ()
+[//]: # (schema.isValid&#40;data&#41;;  // false)
+
+[//]: # (data.put&#40;"key2", "value2"&#41;;)
+
+[//]: # (schema.isValid&#40;data&#41;; // true)
+
+[//]: # (```)
+
+[//]: # (### Вложенная валидация)
+
+[//]: # (```)
+
+[//]: # (import hexlet.code.Validator;)
+
+[//]: # (import hexlet.code.schemas.MapSchema;)
+
+[//]: # (import hexlet.code.schemas.BaseSchema;)
+
+[//]: # ()
+[//]: # (Validator v = new Validator&#40;&#41;;)
+
+[//]: # ()
+[//]: # (MapSchema schema = v.map&#40;&#41;;)
+
+[//]: # ()
+[//]: # (// shape - позволяет описывать валидацию для значений объекта Map по ключам.)
+
+[//]: # (Map<String, BaseSchema> schemas = new HashMap<>&#40;&#41;;)
+
+[//]: # (schemas.put&#40;"name", v.string&#40;&#41;.required&#40;&#41;&#41;;)
+
+[//]: # (schemas.put&#40;"age", v.number&#40;&#41;.positive&#40;&#41;&#41;;)
+
+[//]: # (schema.shape&#40;schemas&#41;;)
+
+[//]: # ()
+[//]: # (Map<String, Object> human1 = new HashMap<>&#40;&#41;;)
+
+[//]: # (human1.put&#40;"name", "Kolya"&#41;;)
+
+[//]: # (human1.put&#40;"age", 100&#41;;)
+
+[//]: # (schema.isValid&#40;human1&#41;; // true)
+
+[//]: # ()
+[//]: # (Map<String, Object> human2 = new HashMap<>&#40;&#41;;)
+
+[//]: # (human2.put&#40;"name", "Maya"&#41;;)
+
+[//]: # (human2.put&#40;"age", null&#41;;)
+
+[//]: # (schema.isValid&#40;human2&#41;; // true)
+
+[//]: # ()
+[//]: # (Map<String, Object> human3 = new HashMap<>&#40;&#41;;)
+
+[//]: # (human3.put&#40;"name", ""&#41;;)
+
+[//]: # (human3.put&#40;"age", null&#41;;)
+
+[//]: # (schema.isValid&#40;human3&#41;; // false)
+
+[//]: # ()
+[//]: # (Map<String, Object> human4 = new HashMap<>&#40;&#41;;)
+
+[//]: # (human4.put&#40;"name", "Valya"&#41;;)
+
+[//]: # (human4.put&#40;"age", -5&#41;;)
+
+[//]: # (schema.isValid&#40;human4&#41;; // false)
+[//]: # (```)
