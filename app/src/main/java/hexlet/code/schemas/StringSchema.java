@@ -2,7 +2,6 @@ package hexlet.code.schemas;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Predicate;
 
 public class StringSchema {
@@ -26,11 +25,11 @@ public class StringSchema {
         return this;
     }
     public final boolean isValid(Object obj){
-        if (obj == null){
+        if (obj == null) {
             return !checking;
         }
-        for (Predicate condition : conditions){
-            if (!condition.test(obj)){
+        for (Predicate condition : conditions) {
+            if (!condition.test(obj)) {
                 return !checking;
             }
         }
