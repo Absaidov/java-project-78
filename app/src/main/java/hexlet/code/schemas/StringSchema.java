@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class StringSchema {
-
     private List<Predicate> conditions = new ArrayList<>();
     private boolean checking;
 
