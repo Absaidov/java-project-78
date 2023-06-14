@@ -36,51 +36,51 @@ schema.isValid("what does the fox say"); // false
 // уже false, так как добавлена ещё одна проверка contains("whatthe")
 ```
 
-[//]: # (### Валидация чисел)
+### Валидация чисел
 
-[//]: # (```)
+```
 
-[//]: # (import hexlet.code.Validator;)
+import hexlet.code.Validator;
 
-[//]: # (import hexlet.code.schemas.NumberSchema;)
+import hexlet.code.schemas.NumberSchema;
 
-[//]: # ()
-[//]: # (Validator v = new Validator&#40;&#41;;)
 
-[//]: # ()
-[//]: # (NumberSchema schema = v.number&#40;&#41;;)
+Validator v = new Validator();
 
-[//]: # ()
-[//]: # (schema.isValid&#40;null&#41;; // true)
 
-[//]: # ()
-[//]: # (schema.required&#40;&#41;;)
+NumberSchema schema = v.number();
 
-[//]: # ()
-[//]: # (schema.isValid&#40;null&#41;; // false)
 
-[//]: # (schema.isValid&#40;10&#41; // true)
+schema.isValid(null); // true
 
-[//]: # (schema.isValid&#40;"5"&#41;; // false)
 
-[//]: # ()
-[//]: # (schema.positive&#40;&#41;.isValid&#40;10&#41;; // true)
+schema.required();
 
-[//]: # (schema.isValid&#40;-10&#41;; // false)
 
-[//]: # ()
-[//]: # (schema.range&#40;5, 10&#41;;)
+schema.isValid(null); // false
 
-[//]: # ()
-[//]: # (schema.isValid&#40;5&#41;; // true)
+schema.isValid(10) // true
 
-[//]: # (schema.isValid&#40;10&#41;; // true)
+schema.isValid("5"); // false
 
-[//]: # (schema.isValid&#40;4&#41;; // false)
 
-[//]: # (schema.isValid&#40;11&#41;; // false)
+schema.positive().isValid(10); // true
 
-[//]: # (```)
+schema.isValid(-10); // false
+
+
+schema.range(5, 10);
+
+
+schema.isValid(5); // true
+
+schema.isValid(10); // true
+
+schema.isValid(4); // false
+
+schema.isValid(11); // false
+
+```
 
 [//]: # (### Валидация объектов типа Map)
 
