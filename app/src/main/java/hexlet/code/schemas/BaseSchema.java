@@ -11,18 +11,18 @@ public class BaseSchema {
     private List<Predicate> conditions = new ArrayList<>();
     @Setter
     @Getter
-    private boolean checking;
+    private boolean checking = false;
 
     protected final void addCondition(Predicate condition) {
         conditions.add(condition);
     }
     public final boolean isValid(Object obj) {
         if (obj == null) {
-            return !isChecking();
+            return (!isChecking());
         }
         for (Predicate condition : conditions) {
             if (!condition.test(obj)) {
-                return !isChecking();
+                return false;
             }
         }
         return true;
