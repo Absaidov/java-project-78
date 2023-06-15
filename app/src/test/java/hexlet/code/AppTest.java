@@ -9,20 +9,11 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static hexlet.code.App.hello;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 
 public class AppTest {
-    @Test
-    public void testApp() {
-        String expected = "Hello World! LOL";
-        assertEquals(expected, hello());
-    }
-
     @Test
     public void testStringSchema() {
         Validator v = new Validator();
